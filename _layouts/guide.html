@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dbwebb-se/utils-2025@v1.0.11/css/style.css" /> -->
 
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 * {
     margin: 0;
@@ -404,6 +404,16 @@ blockquote {
         </nav>
     </header>
     <main class="main" id="main">
+        <aside class="sidebar">
+            <h3>Innehåll</h3>
+            {% assign dir = include.dir | default: page.dir %}
+            {% assign mypages = site.pages | where:"dir", dir | sort: "order" %}
+            <ul>
+            {% for page in mypages %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </aside>
         <article class="article" id="article">
             {{ content }}
         </article>
